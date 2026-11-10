@@ -1,0 +1,130 @@
+/*
+ * FTuz design tokens.
+ * Layout = Bento grid · Surfaces = glass · Controls = soft UI (raised / inset) with real borders.
+ * Income/expense pairs were checked for colour-blind separation; they always ship with a +/− sign and an arrow icon.
+ */
+
+:root {
+  color-scheme: light;
+  --font: 'Inter Variable', 'Inter', 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --bg: #eaf1ee;
+  --bg-blob-1: rgba(16, 185, 129, 0.22);
+  --bg-blob-2: rgba(14, 165, 233, 0.16);
+  --bg-blob-3: rgba(202, 138, 4, 0.12);
+
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: rgba(255, 255, 255, 0.9);
+  --surface-solid: #ffffff;
+  --surface-sunken: #e3ebe8;
+  --glass-border: rgba(255, 255, 255, 0.75);
+  --hairline: rgba(15, 23, 42, 0.08);
+  --glass-blur: 18px;
+
+  --text: #0f172a;
+  --text-2: #334155;
+  --muted: #5b6b7f;
+  --on-primary: #ffffff;
+
+  --primary: #047857;
+  --primary-hover: #065f46;
+  --primary-soft: rgba(4, 120, 87, 0.1);
+  --focus: #0ea5e9;
+
+  /* data marks */
+  --income: #0d9488;
+  --expense: #e11d48;
+  /* text versions (≥ 4.5:1 on surfaces) */
+  --income-text: #0f766e;
+  --expense-text: #be123c;
+  --income-soft: rgba(13, 148, 136, 0.12);
+  --expense-soft: rgba(225, 29, 72, 0.1);
+
+  --warning: #d97706;
+  --warning-text: #92400e;
+  --warning-soft: rgba(217, 119, 6, 0.12);
+  --danger-soft: rgba(225, 29, 72, 0.1);
+  --success-soft: rgba(13, 148, 136, 0.12);
+  --info: #0369a1;
+  --info-soft: rgba(3, 105, 161, 0.1);
+  --gold: #ca8a04;
+  --other: #94a3b8;
+
+  --chart-grid: rgba(15, 23, 42, 0.07);
+  --chart-axis: #64748b;
+
+  --shadow-glass: 0 1px 0 rgba(255, 255, 255, 0.9) inset, 0 10px 30px -12px rgba(15, 23, 42, 0.18);
+  --soft-raised: 5px 5px 12px rgba(15, 23, 42, 0.1), -5px -5px 12px rgba(255, 255, 255, 0.95);
+  --soft-raised-sm: 3px 3px 7px rgba(15, 23, 42, 0.1), -3px -3px 7px rgba(255, 255, 255, 0.95);
+  --soft-inset: inset 3px 3px 6px rgba(15, 23, 42, 0.09), inset -3px -3px 6px rgba(255, 255, 255, 0.9);
+
+  --radius-xl: 28px;
+  --radius-lg: 22px;
+  --radius: 16px;
+  --radius-sm: 12px;
+  --control-h: 2.75rem;
+  --gap: 16px;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0a111e;
+  --bg-blob-1: rgba(16, 185, 129, 0.16);
+  --bg-blob-2: rgba(14, 116, 144, 0.18);
+  --bg-blob-3: rgba(202, 138, 4, 0.08);
+
+  --surface: rgba(20, 30, 48, 0.68);
+  --surface-strong: rgba(24, 35, 56, 0.92);
+  --surface-solid: #141e30;
+  --surface-sunken: #0d1626;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --hairline: rgba(255, 255, 255, 0.08);
+
+  --text: #e8eef6;
+  --text-2: #c2cdda;
+  --muted: #94a3b8;
+  --on-primary: #052e22;
+
+  --primary: #34d399;
+  --primary-hover: #6ee7b7;
+  --primary-soft: rgba(52, 211, 153, 0.12);
+  --focus: #38bdf8;
+
+  --income: #12a594;
+  --expense: #f43f5e;
+  --income-text: #2dd4bf;
+  --expense-text: #fb7185;
+  --income-soft: rgba(18, 165, 148, 0.16);
+  --expense-soft: rgba(244, 63, 94, 0.14);
+
+  --warning: #f59e0b;
+  --warning-text: #fbbf24;
+  --warning-soft: rgba(245, 158, 11, 0.14);
+  --danger-soft: rgba(244, 63, 94, 0.14);
+  --success-soft: rgba(18, 165, 148, 0.16);
+  --info: #38bdf8;
+  --info-soft: rgba(56, 189, 248, 0.12);
+  --gold: #facc15;
+  --other: #64748b;
+
+  --chart-grid: rgba(255, 255, 255, 0.07);
+  --chart-axis: #94a3b8;
+
+  --shadow-glass: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 14px 34px -14px rgba(0, 0, 0, 0.6);
+  --soft-raised: 5px 5px 12px rgba(0, 0, 0, 0.45), -4px -4px 10px rgba(255, 255, 255, 0.035);
+  --soft-raised-sm: 3px 3px 7px rgba(0, 0, 0, 0.45), -2px -2px 6px rgba(255, 255, 255, 0.035);
+  --soft-inset: inset 3px 3px 7px rgba(0, 0, 0, 0.5), inset -2px -2px 6px rgba(255, 255, 255, 0.03);
+}
+
+/* Text size preference: everything is sized in rem. */
+:root[data-text='s'] { font-size: 15px; }
+:root[data-text='m'] { font-size: 16px; }
+:root[data-text='l'] { font-size: 18px; }
+:root[data-text='xl'] { font-size: 20px; }
+
+/* Simple mode: bigger targets everywhere. */
+:root[data-simple='true'] { --control-h: 3.25rem; }
+
+@media (prefers-reduced-transparency: reduce) {
+  :root { --surface: var(--surface-strong); --glass-blur: 0px; }
+}

@@ -1,0 +1,26 @@
+{$DOMAIN} {
+	encode zstd gzip
+
+	@django path /api/* /admin/* /static/*
+	handle @django {
+		reverse_proxy api:8000
+	}
+
+	handle {
+		root * /srv
+		# Hashed build assets never change; index.html must always be fresh.
+		@assets path /assets/*
+		header @assets Cache-Control "public, max-age=31536000, immutable"
+		@pages not path /assets/*
+		header @pages Cache-Control "no-cache"
+		try_files {path} /index.html
+		file_server
+	}
+
+	header {
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		X-Frame-Options DENY
+		-Server
+	}
+}
