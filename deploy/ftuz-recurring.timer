@@ -1,0 +1,11 @@
+# /etc/systemd/system/ftuz-recurring.timer — hourly; the command is idempotent.
+[Unit]
+Description=Run FTuz repeating payments hourly
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+RandomizedDelaySec=120
+
+[Install]
+WantedBy=timers.target

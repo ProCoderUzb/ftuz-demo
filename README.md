@@ -136,6 +136,10 @@ With `DJANGO_DEBUG=false` Django redirects HTTP to HTTPS, uses secure cookies, t
 
 ### Without Docker
 
+For a lighter setup with nginx, gunicorn and systemd (no Docker), follow
+[deploy/README.md](deploy/README.md); the config files are in `deploy/`. It serves the web app on
+`ft.educationpro.uz` and the API on `ftapi.educationpro.uz`. In short:
+
 - Set `DJANGO_DEBUG=false`, a long random `DJANGO_SECRET_KEY`, `DJANGO_ALLOWED_HOSTS` and
   `DATABASE_URL` (PostgreSQL). Settings are read from environment variables.
 - Run `migrate`, `collectstatic`, then `gunicorn config.wsgi:application` behind an HTTPS proxy that

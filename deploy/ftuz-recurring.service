@@ -1,0 +1,12 @@
+# /etc/systemd/system/ftuz-recurring.service — creates due repeating payments (run by the timer).
+[Unit]
+Description=FTuz: create due repeating-payment transactions
+After=postgresql.service
+
+[Service]
+Type=oneshot
+User=ftuz
+Group=ftuz
+WorkingDirectory=/srv/ftuz/backend
+EnvironmentFile=/etc/ftuz.env
+ExecStart=/srv/ftuz/backend/.venv/bin/python manage.py run_recurring

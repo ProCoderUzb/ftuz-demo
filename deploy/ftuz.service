@@ -1,0 +1,21 @@
+# /etc/systemd/system/ftuz.service — the Django API on gunicorn.
+[Unit]
+Description=FTuz API (gunicorn)
+After=network.target postgresql.service
+
+[Service]
+User=ftuz
+Group=ftuz
+WorkingDirectory=/srv/ftuz/backend
+EnvironmentFile=/etc/ftuz.env
+# 2 workers suit a 1 GB server; use (2 x CPU cores) + 1 on bigger ones.
+ExecStart=/srv/ftuz/backend/.venv/bin/gunicorn config.wsgi:application \
+    --bind 127.0.0.1:8000 --workers 2 --timeout 60 --access-logfile -
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
